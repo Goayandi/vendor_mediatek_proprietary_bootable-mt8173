@@ -1,0 +1,113 @@
+LOCAL_DIR := $(GET_LOCAL_DIR)
+
+DEFINES += BUILD_LK
+DEFINES += SKIP_MTK_PARTITION_HEADER_CHECK \
+
+BOOT_LOGO := hd720
+
+#FIXME start: original in ProjectConfig.mk
+MTK_EMMC_SUPPORT = yes
+export MTK_EMMC_SUPPORT
+#DEFINES += MTK_NEW_COMBO_EMMC_SUPPORT
+MTK_KERNEL_POWER_OFF_CHARGING = yes
+export MTK_KERNEL_POWER_OFF_CHARGING
+MTK_BQ25890_SUPPORT = yes
+export MTK_BQ25890_SUPPORT
+export MTK_LCM_PHYSICAL_ROTATION
+#DEFINES += BUILD_LK
+#DEFINES += MTK_LCM_PHYSICAL_ROTATION=0
+#DEFINES += CPT_CLAP070WP03XG_SN65DSI83
+#FIXME end: original in ProjectConfig.mk
+CUSTOM_LK_LCM=lq101r1sx01a_wqxga_dsi_vdo
+PLATFORM := mt8173
+
+MODULES += \
+	dev/keys \
+	lib/ptable \
+	dev/lcm \
+
+DUMMY_AP := no
+
+ifeq ($(DUMMY_AP), yes)
+MEMBASE := 0x50000000 # SDRAM
+else
+MEMBASE := 0x41E00000 # SDRAM
+endif
+
+ifeq ($(MTK_MLC_NAND_SUPPORT), yes)
+DEFINES += MTK_MLC_NAND_SUPPORT
+MEMSIZE := 0x00900000 # 9MB
+else ifeq ($(MTK_TLC_NAND_SUPPORT), yes)
+DEFINES += MTK_TLC_NAND_SUPPORT
+MEMSIZE := 0x00900000 # 9MB
+else
+MEMSIZE := 0x00400000 # 4MB
+endif
+
+
+SCRATCH_ADDR     := 0x45000000
+SCRATCH_SIZE     := 0x08000000 # 128MB
+DEFINES += SCRATCH_SIZE=$(SCRATCH_SIZE)
+
+MACH_TYPE := 8173
+
+HAVE_CACHE_PL310 := no
+MTK_LM_MODE := no
+MTK_FASTBOOT_SUPPORT := no
+LK_PROFILING := yes
+DEVICE_TREE_SUPPORT := yes
+
+
+DEFINES += \
+	MEMBASE=$(MEMBASE)\
+	SCRATCH_ADDR=$(SCRATCH_ADDR)\
+	MACH_TYPE=$(MACH_TYPE)\
+	ENABLE_L2_SHARING\
+	DEVICE_TREE_SUPPORT
+
+DEFINES += FIX_CPU_CORE_NUM
+
+ifeq ($(DUMMY_AP), yes)
+DEFINES += DUMMY_AP
+endif
+
+ifeq ($(HAVE_CACHE_PL310), yes)
+DEFINES += HAVE_CACHE_PL310
+endif
+
+ifeq ($(MTK_LM_MODE), yes)
+DEFINES += MTK_LM_MODE
+endif
+
+ifeq ($(DEVICE_TREE_SUPPORT), yes)
+DEFINES += DEVICE_TREE_SUPPORT
+endif
+
+ifeq ($(MTK_FASTBOOT_SUPPORT), yes)
+DEFINES += MTK_FASTBOOT_SUPPORT
+endif
+
+ifeq ($(LK_PROFILING), yes)
+DEFINES += LK_PROFILING
+endif
+
+ifneq ($(filter user userdebug, $(TARGET_BUILD_VARIANT)),)
+DEFINES += USER_BUILD
+endif
+
+ifeq ($(MTK_BOOT_SOUND_SUPPORT), yes)
+OBJS += $(LOCAL_DIR)/mt_boot_sound_custom.o
+endif
+
+INCLUDES += -I$(LOCAL_DIR)/include
+INCLUDES += -I$(LOCAL_DIR)/include/target
+INCLUDES += -I$(LOCAL_DIR)/inc
+
+OBJS += \
+        $(LOCAL_DIR)/init.o \
+        $(LOCAL_DIR)/cust_msdc.o\
+        $(LOCAL_DIR)/cust_display.o\
+        $(LOCAL_DIR)/cust_leds.o\
+        $(LOCAL_DIR)/power_off.o\
+		$(LOCAL_DIR)/backlight.o\
+        $(LOCAL_DIR)/fastboot_oem_commands.o\

@@ -1,0 +1,281 @@
+/*****************************************************************************
+*
+* Filename:
+* ---------
+*   BQ25892.h
+*
+* Project:
+* --------
+*   Android
+*
+* Description:
+* ------------
+*   BQ25892 header file
+*
+* Author:
+* -------
+*
+****************************************************************************/
+
+#ifndef _BQ25892_SW_H_
+#define _BQ25892_SW_H_
+
+
+#define BQ25892_CON0    0x00
+#define BQ25892_CON1    0x01
+#define BQ25892_CON2    0x02
+#define BQ25892_CON3    0x03
+#define BQ25892_CON4    0x04
+#define BQ25892_CON5    0x05
+#define BQ25892_CON6    0x06
+#define BQ25892_CON7    0x07
+#define BQ25892_CON8    0x08
+#define BQ25892_CON9    0x09
+#define BQ25892_CON10   0x0A
+#define BQ25892_CON11   0x0B
+#define BQ25892_CON12   0x0C
+#define BQ25892_CON13   0x0D
+#define BQ25892_CON14   0x0E
+#define BQ25892_CON15   0x0F
+#define BQ25892_CON16   0x10
+#define BQ25892_CON17   0x11
+#define BQ25892_CON18   0x12
+#define BQ25892_CON19   0x13
+#define BQ25892_CON20   0x14
+
+#define BQ25892_REG_NUM 21
+/**********************************************************
+  *
+  *   [MASK/SHIFT]
+  *
+  *********************************************************/
+/* CON0 */
+#define CON0_EN_HIZ_MASK   0x01
+#define CON0_EN_HIZ_SHIFT  7
+
+#define CON0_IINLIM_MASK   0x3F
+#define CON0_IINLIM_SHIFT  0
+
+/* CON1 */
+#define CON1_VINDPM_OS_MASK 0x1F
+#define CON1_VINDPM_OS_SHIFT 0
+
+/* CON2 */
+
+#define CON2_ICO_EN_MASK 0x01
+#define CON2_ICO_EN_SHIFT 4
+
+#define CON2_HVDCP_EN_MASK 0x01
+#define CON2_HVDCP_EN_SHIFT 3
+
+#define CON2_MAXC_EN_MASK 0x01
+#define CON2_MAXC_EN_SHIFT 2
+
+#define CON2_FORCE_DPDM_MASK 0x01
+#define CON2_FORCE_DPDM_SHIFT 1
+
+#define CON2_AUTO_DPDM_MASK 0x01
+#define CON2_AUTO_DPDM_SHIFT 0
+
+/* CON3 */
+#define CON3_WDT_RST_MASK     0x01
+#define CON3_WDT_RST_SHIFT    6
+
+#define CON3_OTG_CONFIG_MASK        0x01
+#define CON3_OTG_CONFIG_SHIFT       5
+
+#define CON3_CHG_CONFIG_MASK        0x01
+#define CON3_CHG_CONFIG_SHIFT       4
+
+#define CON3_SYS_MIN_MASK        0x07
+#define CON3_SYS_MIN_SHIFT       1
+
+/* CON4 */
+#define CON4_ICHG_MASK    0x7F
+#define CON4_ICHG_SHIFT   0
+
+/* CON5 */
+#define CON5_IPRECHG_MASK   0x0F
+#define CON5_IPRECHG_SHIFT  4
+
+#define CON5_ITERM_MASK           0x0F
+#define CON5_ITERM_SHIFT          0
+
+/* CON6 */
+#define CON6_VREG_MASK     0x3F
+#define CON6_VREG_SHIFT    2
+
+#define CON6_BATLOWV_MASK     0x01
+#define CON6_BATLOWV_SHIFT    1
+
+#define CON6_VRECHG_MASK    0x01
+#define CON6_VRECHG_SHIFT   0
+
+/* CON7 */
+#define CON7_EN_TERM_MASK      0x01
+#define CON7_EN_TERM_SHIFT     7
+
+#define CON7_WATCHDOG_MASK     0x03
+#define CON7_WATCHDOG_SHIFT    4
+
+#define CON7_EN_TIMER_MASK      0x01
+#define CON7_EN_TIMER_SHIFT     3
+
+#define CON7_CHG_TIMER_MASK           0x03
+#define CON7_CHG_TIMER_SHIFT          1
+
+/* CON8 */
+
+#define CON8_BAT_COMP_MASK 0x7
+#define CON8_BAT_COMP_SHIFT 5
+
+#define CON8_VCLAMP_MASK 0x7
+#define CON8_VCLAMP_SHIFT 2
+
+#define CON8_TREG_MASK     0x03
+#define CON8_TREG_SHIFT    0
+
+/* CON9 */
+#define CON9_BATFET_DIS_MASK      0x01
+#define CON9_BATFET_DIS_SHIFT     5
+
+#define CON9_JEITA_VSET_MASK 0x01
+#define CON9_JEITA_VSET_SHIFT 4
+
+/* CON10 */
+#define CON10_BOOST_LIM_MASK   0x07
+#define CON10_BOOST_LIM_SHIFT  0
+
+#define CON10_BOOSTV_MASK 0x0F
+#define CON10_BOOSTV_SHIFT 4
+
+/* CON11 */
+#define CON11_VBUS_STAT_MASK      0x07
+#define CON11_VBUS_STAT_SHIFT     5
+
+#define CON11_CHRG_STAT_MASK           0x03
+#define CON11_CHRG_STAT_SHIFT          3
+
+#define CON11_PG_STAT_MASK           0x01
+#define CON11_PG_STAT_SHIFT          2
+
+#define CON11_SDP_STAT_MASK           0x01
+#define CON11_SDP_STAT_SHIFT          1
+
+#define CON11_VSYS_STAT_MASK           0x01
+#define CON11_VSYS_STAT_SHIFT          0
+
+/* CON12 */
+#define CON12_WATCHDOG_FAULT_MASK      0x01
+#define CON12_WATCHDOG_FAULT_SHIFT     7
+
+#define CON12_OTG_FAULT_MASK           0x01
+#define CON12_OTG_FAULT_SHIFT          6
+
+#define CON12_CHRG_FAULT_MASK           0x03
+#define CON12_CHRG_FAULT_SHIFT          4
+
+#define CON12_CHRG_INPUT_FAULT_MASK     0x01
+#define CON12_CHRG_THERMAL_SHUTDOWN_FAULT_MASK     0x02
+#define CON12_CHRG_TIMER_EXPIRATION_FAULT_MASK     0x03
+
+#define CON12_BAT_FAULT_MASK           0x01
+#define CON12_BAT_FAULT_SHIFT          3
+
+#define CON12_NTC_FAULT_MASK           0x07
+#define CON12_NTC_FAULT_SHIFT          0
+
+/* CON13 */
+#define CON13_FORCE_VINDPM_MASK 0x01
+#define CON13_FORCE_VINDPM_SHIFT 7
+
+#define CON13_VINDPM_MASK 0x7F
+#define CON13_VINDPM_SHIFT 0
+
+/* CON19 */
+#define CON19_VDPM_STAT_MASK           0x01
+#define CON19_VDPM_STAT_SHIFT          7
+
+#define CON19_IDPM_STAT_MASK           0x01
+#define CON19_IDPM_STAT_SHIFT          6
+
+#define CON19_IDPM_LIM_MASK 0x3F
+#define CON19_IDPM_LIM_SHIFT 0
+
+/* CON20 */
+#define CON20_REG_RST_MASK 0x01
+#define CON20_REG_RST_SHIFT 7
+
+#define CON20_PN_MASK      0x07
+#define CON20_PN_SHIFT     3
+
+#define CON20_REV_MASK           0x03
+#define CON20_REV_SHIFT          0
+
+/**********************************************************
+  *
+  *   [Extern Function]
+  *
+  *********************************************************/
+/* CON0---------------------------------------------------- */
+extern void BQ25892_set_en_hiz(kal_uint32 val);
+extern void BQ25892_set_iinlim(kal_uint32 val);
+extern kal_uint32 BQ25892_get_iinlim(void);
+/* CON1---------------------------------------------------- */
+/* CON2---------------------------------------------------- */
+extern void BQ25892_set_force_dpdm(kal_uint32 val);
+extern void BQ25892_set_auto_dpdm_en(kal_uint32 val);
+extern kal_uint32 BQ25892_get_dpdm_status(void);
+/* CON3---------------------------------------------------- */
+extern void BQ25892_set_wdt_rst(kal_uint32 val);
+extern void BQ25892_set_otg_config(kal_uint32 val);
+extern void BQ25892_set_chg_config(kal_uint32 val);
+extern void BQ25892_set_sys_min(kal_uint32 val);
+/* CON4---------------------------------------------------- */
+extern void BQ25892_set_ichg(kal_uint32 val);
+extern kal_uint32 BQ25892_get_ichg(void);
+/* CON5---------------------------------------------------- */
+extern void BQ25892_set_iprechg(kal_uint32 val);
+extern void BQ25892_set_iterm(kal_uint32 val);
+/* CON6---------------------------------------------------- */
+extern void BQ25892_set_vreg(kal_uint32 val);
+extern void BQ25892_set_batlowv(kal_uint32 val);
+extern void BQ25892_set_vrechg(kal_uint32 val);
+/* CON7---------------------------------------------------- */
+extern void BQ25892_set_en_term(kal_uint32 val);
+extern void BQ25892_set_watchdog(kal_uint32 val);
+extern void BQ25892_set_en_timer(kal_uint32 val);
+extern void BQ25892_set_chg_timer(kal_uint32 val);
+/* CON8---------------------------------------------------- */
+extern void BQ25892_set_treg(kal_uint32 val);
+/* CON9---------------------------------------------------- */
+extern void BQ25892_set_batfet_disable(kal_uint32 val);
+/* CON10---------------------------------------------------- */
+extern void BQ25892_set_boost_lim(kal_uint32 val);
+/* CON11---------------------------------------------------- */
+extern kal_uint32 BQ25892_get_system_status(void);
+extern kal_uint32 BQ25892_get_vbus_stat(void);
+extern kal_uint32 BQ25892_get_chrg_stat(void);
+extern kal_uint32 BQ25892_get_pg_stat(void);
+extern kal_uint32 BQ25892_get_vsys_stat(void);
+/* CON13---------------------------------------------------- */
+extern void BQ25892_set_vindpm(kal_uint32 val);
+/* CON19---------------------------------------------------- */
+extern kal_uint32 BQ25892_get_vdpm_stat(void);
+extern kal_uint32 BQ25892_get_idpm_stat(void);
+extern kal_uint32 BQ25892_get_current_iinlim(void);
+/* CON20---------------------------------------------------- */
+extern void BQ25892_set_reg_rst(kal_uint32 val);
+extern kal_uint32 BQ25892_get_pn(void);
+extern kal_uint32 BQ25892_get_rev(void);
+/* --------------------------------------------------------- */
+
+
+extern void BQ25892_dump_register(void);
+extern kal_uint32 BQ25892_read_interface(kal_uint8 RegNum, kal_uint8 *val, kal_uint8 MASK, kal_uint8 SHIFT);
+
+CHARGER_TYPE BQ25892_charger_type_detection(void);
+extern void Charger_Detect_Init(void);
+extern void Charger_Detect_Release(void);
+
+#endif              /* _BQ25892_SW_H_ */
